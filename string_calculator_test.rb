@@ -12,6 +12,9 @@ class StringCalculatorTest < Minitest::Spec
     assert_equal 0, @string_calc.add("")
   end
 
+  def test_add_single_number 
+    assert_equal 4, @string_calc.add("4")
+  end
   def test_add_split_comma
     assert_equal 5, @string_calc.add("2,3")
   end

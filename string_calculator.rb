@@ -1,6 +1,10 @@
 # class: string calculator
 # methods: @add (string) -> returns (integer)
 
+# ref: 
+# 1. https://blog.incubyte.co/blog/tdd-assessment/
+# 2. https://osherove.com/tdd-kata-1/
+
 class StringCalculater
 
   def add(string)
