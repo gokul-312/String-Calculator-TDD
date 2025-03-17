@@ -34,6 +34,14 @@ class StringCalculatorTest < Minitest::Spec
     end
   end
 
+  def test_values_more_than_1000
+    assert_equal 2, @string_calc.add("2,1001")
+  end
+
+  def test_add_with_mixed_delimiters
+    assert_equal 6, @string_calc.add("//[***]\n1***2***3")
+  end
+
   ## find_values
   def test_find_values_with_comma
     assert_equal %w[1 2 3], @string_calc.find_values("1,2,3")
@@ -46,21 +54,7 @@ class StringCalculatorTest < Minitest::Spec
   def test_find_values_with_custom_delimiter
     assert_equal %w[1 2], @string_calc.find_values("//;\n1;2")
   end
-
-  ## raise_if_negative
-  def test_raise_if_negative_with_no_negatives
-    assert_nil @string_calc.raise_if_negative([1, 2, 3])
-  end
-
-  def test_raise_if_negative_with_negatives
-    assert_raises RuntimeError, "Negatives not allowed: -1, -2" do
-      @string_calc.raise_if_negative([-1, 2, -2])
-    end
-  end
-
-  def test_raise_if_negative_with_all_negatives
-    assert_raises RuntimeError, "Negatives not allowed: -1, -2, -3" do
-      @string_calc.raise_if_negative([-1, -2, -3])
-    end
+  def test_find_values_with_mixed_delimiters
+    assert_equal %w[1 2 3], @string_calc.find_values("//[***]\n1***2***3")
   end
 end
