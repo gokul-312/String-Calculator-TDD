@@ -42,6 +42,10 @@ class StringCalculatorTest < Minitest::Spec
     assert_equal 6, @string_calc.add("//[***]\n1***2***3")
   end
 
+  def test_add_with_mixed_multiple_delimiters
+    assert_equal 6, @string_calc.add("//[*][%]\n1*2%3")
+  end
+
   ## find_values
   def test_find_values_with_comma
     assert_equal %w[1 2 3], @string_calc.find_values("1,2,3")
@@ -56,5 +60,8 @@ class StringCalculatorTest < Minitest::Spec
   end
   def test_find_values_with_mixed_delimiters
     assert_equal %w[1 2 3], @string_calc.find_values("//[***]\n1***2***3")
+  end
+  def test_find_values_with_mixed_multiple_delimiters
+    assert_equal %w[1 2 3], @string_calc.find_values("//[*][%]\n1*2%3")
   end
 end
